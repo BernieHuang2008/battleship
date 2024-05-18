@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Page</title>
+</head>
+<body>
+    <script>
+        // Connect to the web server
+        var socket = new WebSocket("ws://127.0.0.1:8765");
+
+        // Handle connection open event
+        socket.onopen = function(event) {
+            console.log("Connected to the web server");
+            // send hello
+            socket.send("Hello");
+        };
+
+        // Handle message received event
+        socket.onmessage = function(event) {
+            console.log("Received message: " + event.data);
+        };
+
+        // Handle connection close event
+        socket.onclose = function(event) {
+            console.log("Disconnected from the web server");
+        };
+    </script>
+</body>
+</html>
